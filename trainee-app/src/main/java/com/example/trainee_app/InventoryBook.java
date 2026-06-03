@@ -1,10 +1,10 @@
 package com.example.trainee_app;
 
 public class InventoryBook {
-    int bookId;
-    String title;
-    double price;
-    int stockCount;
+    private int bookId;
+    private String title;
+    private double price;
+    private int stockCount;
 
     public InventoryBook(int bookId, String title, double price, int stockCount) {
         this.bookId = bookId;
