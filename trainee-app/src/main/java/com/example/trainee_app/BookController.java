@@ -13,9 +13,9 @@ public class BookController {
     static private ArrayList<Book> books = new ArrayList<>();
 
     @GetMapping("/add-book")
-    public String add(int id, String name){
-     books.add(new Book(id,name));
-     return  "Book added successfully!";
+    public String add(int id, String name, int authorId) {
+        books.add(new Book(id, name, authorId));
+        return "Book added successfully!";
     }
 
     @GetMapping("/all-books")
@@ -46,7 +46,7 @@ public class BookController {
     }
 
     @GetMapping("/search-msg")
-    public String searchMessage(int id, String name){
+    public String searchMessage(int id, String name, int authorId){
         for (int i =0; i<books.size();i++){
             Book book = books.get(i);
             if ( book.getId() == id){

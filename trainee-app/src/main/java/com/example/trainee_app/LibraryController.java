@@ -17,4 +17,8 @@ public class LibraryController {
         return "Author added successfully";
     }
 
+    @GetMapping("/allAuthors")
+    public List<Author> allAuthors(){
+        return authorList;
+    }
 }
