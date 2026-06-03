@@ -38,4 +38,31 @@ public class LibraryController {
         }
         return "Error: Registry Failed";
     }
+    @GetMapping("/authorReport")
+    public String authorReport(@RequestParam String authorName){
+        Author foundAuthor = null;
+
+        for (Author author : authorList){
+            if (author.getName().equalsIgnoreCase(authorName)){
+                foundAuthor = author;
+                break;
+            }
+        }
+        if (foundAuthor == null) {
+            return "Error: Author Not Found";
+        }
+
+        String booksWritten = "";
+        for (Book book : bookList) {
+            if (book.getAuthorId() == foundAuthor.getId()) {
+                booksWritten += book.getName() + " ";
+            }
+        }
+        if (booksWritten.equals("")) {
+            booksWritten = "None";
+        }
+        return "Author Name: " + foundAuthor.getName()
+                + ", Biography: " + foundAuthor.getBiography()
+                + ", Books Written: " + booksWritten;
+    }
 }
