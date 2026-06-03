@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 public class BookController {
@@ -16,4 +17,8 @@ public class BookController {
      return  "Book added successfully!";
     }
 
+    @GetMapping("/all-books")
+    public List<Book> AllBooks(){
+        return books;
+    }
 }
