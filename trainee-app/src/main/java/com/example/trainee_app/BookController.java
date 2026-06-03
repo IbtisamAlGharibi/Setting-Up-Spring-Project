@@ -33,4 +33,15 @@ public class BookController {
        }
        return null;
     }
+
+    @GetMapping("/find-by-name")
+    public String findByName( @RequestParam String name){
+        for (int i =0; i<books.size();i++){
+            Book book = books.get(i);
+            if ( book.getName().equalsIgnoreCase(name)){
+                return name;
+            }
+        }
+        return null;
+    }
 }
