@@ -16,4 +16,20 @@ public class BookstoreController {
         inventoryBookList.add(new InventoryBook(id,title,price,stockCount));
         return " Book is successfully added to the bookstore's catalog";
     }
+
+    @GetMapping("/checkStock")
+    public String checkStock(@RequestParam int targetId){
+
+       for (InventoryBook inventoryBook: inventoryBookList) {
+           if (inventoryBook.getBookId() == targetId) {
+               if (inventoryBook.getStockCount() > 0) {
+                   return "Book is Available: " + inventoryBook.getTitle()
+                           + ", Price: " + inventoryBook.getPrice();
+               } else {
+                   return "Sorry, this book is sold out.";
+               }
+           }
+       }
+       return "The Book store doesn't contain this book";
+    }
 }
