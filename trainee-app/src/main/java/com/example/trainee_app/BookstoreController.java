@@ -32,4 +32,21 @@ public class BookstoreController {
        }
        return "The Book store doesn't contain this book";
     }
+
+    @GetMapping("/lowStockReport")
+    public String lowStockReport(@RequestParam int stockThreshold){
+        String report = "";
+        for (InventoryBook inventoryBook : inventoryBookList){
+
+            if (inventoryBook.getStockCount() <= stockThreshold){
+                report += "Title: " + inventoryBook.getTitle()
+                        + ", Stock Count: " + inventoryBook.getStockCount();
+            }
+        }
+        if (report.equals("")){
+            return "There is No Books!";
+        }
+
+        return report;
+    }
 }
