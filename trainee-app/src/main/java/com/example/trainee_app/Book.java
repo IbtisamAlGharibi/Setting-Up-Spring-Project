@@ -5,12 +5,9 @@ public class Book {
     String name;
     int authorId;
 
-    public Book(int id, String name) {
+    public Book(int id, String name int authorId) {
         this.id = id;
         this.name = name;
-    }
-
-    public Book(int authorId) {
         this.authorId = authorId;
     }
 
