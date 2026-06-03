@@ -12,18 +12,18 @@ import java.util.List;
 public class BookController {
     static private ArrayList<Book> books = new ArrayList<>();
 
-    @GetMapping("/add-book")
+    @GetMapping("/addBook")
     public String add(int id, String name, int authorId) {
         books.add(new Book(id, name, authorId));
         return "Book added successfully!";
     }
 
-    @GetMapping("/all-books")
+    @GetMapping("/allBooks")
     public List<Book> AllBooks(){
         return books;
     }
 
-    @GetMapping("/find-by-id")
+    @GetMapping("/findById")
     public Book findById(@RequestParam int id){
        for (int i =0; i<books.size();i++){
            Book book = books.get(i);
@@ -34,7 +34,7 @@ public class BookController {
        return null;
     }
 
-    @GetMapping("/find-by-name")
+    @GetMapping("/findByName")
     public String findByName( @RequestParam String name){
         for (int i =0; i<books.size();i++){
             Book book = books.get(i);
@@ -45,7 +45,7 @@ public class BookController {
         return null;
     }
 
-    @GetMapping("/search-msg")
+    @GetMapping("/searchMsg")
     public String searchMessage(int id, String name, int authorId){
         for (int i =0; i<books.size();i++){
             Book book = books.get(i);
